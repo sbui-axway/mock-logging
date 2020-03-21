@@ -1,0 +1,133 @@
+{
+    "timestamp": 1584458235768,
+    "correlationId": "fbe9705e4401e09646983ad0",
+    "processInfo": {
+        "hostname": "intapimgmt",
+        "domainId": "cd081f86-d42a-4f93-b231-df607a7ce6d1",
+        "groupId": "group-2",
+        "groupName": "group-spf",
+        "serviceId": "instance-1",
+        "serviceName": "gateway-dpf",
+        "version": "7.7.0 SP1"
+    },
+    "circuitPath": [
+        {
+            "policy": "API Broker",
+            "execTime": 27,
+            "filters": [
+				{
+                    "name": "Set service context",
+                    "type": "ApiServiceContextFilter",
+                    "class": "com.vordel.coreapireg.runtime.broker.ApiServiceContextFilter",
+                    "status": "Pass",
+                    "filterTime": 1584458235739,
+                    "execTime": 0
+                }, 
+				{
+                    "name": "Request Processing",
+                    "type": "CircuitDelegateFilter",
+                    "class": "com.vordel.circuit.CircuitDelegateFilter",
+                    "status": "Pass",
+                    "filterTime": 1584458235758,
+                    "execTime": 19,
+                    "subPaths": [
+						{
+                            "policy": "request-policy",
+                            "execTime": 19,
+                            "filters": [{
+                                    "espk": "DEFAULT_PRIMARY_VordelGateway_7.7.0:645762306278084434",
+                                    "name": "Trace Filter",
+                                    "type": "TraceFilter",
+                                    "class": "com.vordel.circuit.basic.TraceFilter",
+                                    "status": "Pass",
+                                    "filterTime": 1584458235758,
+                                    "execTime": 19
+                                }
+                            ]
+                        }
+                    ]
+                }, {
+                    "name": "Custom Routing",
+                    "type": "VApiCircuitDelegateFilter",
+                    "class": "com.vordel.apiportal.runtime.virtualized.VApiCircuitDelegateFilter",
+                    "status": "Fail",
+                    "filterMessage": "Filter failed",
+                    "filterTime": 1584458235766,
+                    "execTime": 8,
+                    "subPaths": [{
+                            "policy": "xx-routing-sivss",
+                            "execTime": 7,
+                            "filters": [{
+                                    "espk": "DEFAULT_PRIMARY_VordelGateway_7.7.0:9008427851690301660",
+                                    "name": "generate today date",
+                                    "type": "ScriptFilter",
+                                    "class": "com.vordel.circuit.script.ScriptFilter",
+                                    "status": "Pass",
+                                    "filterTime": 1584458235758,
+                                    "execTime": 0
+                                }, {
+                                    "espk": "DEFAULT_PRIMARY_VordelGateway_7.7.0:8743097119306221450",
+                                    "name": "Store Message",
+                                    "type": "StoreContentBodyToAttributeFilter",
+                                    "class": "com.vordel.circuit.body.StoreContentBodyToAttributeFilter",
+                                    "status": "Pass",
+                                    "filterTime": 1584458235758,
+                                    "execTime": 0
+                                }, {
+                                    "espk": "DEFAULT_PRIMARY_VordelGateway_7.7.0:5206059507519817149",
+                                    "name": "Set Message",
+                                    "type": "ChangeMessageFilter",
+                                    "class": "com.vordel.circuit.conversion.ChangeMessageFilter",
+                                    "status": "Pass",
+                                    "filterTime": 1584458235758,
+                                    "execTime": 0
+                                }, {
+                                    "espk": "DEFAULT_PRIMARY_VordelGateway_7.7.0:-1774854698229336715",
+                                    "name": "init reponse",
+                                    "type": "SetAttributeFilter",
+                                    "class": "com.vordel.circuit.attribute.SetAttributeFilter",
+                                    "status": "Pass",
+                                    "filterTime": 1584458235758,
+                                    "execTime": 0
+                                }, {
+                                    "espk": "DEFAULT_PRIMARY_VordelGateway_7.7.0:3938673116414839801",
+                                    "name": "Restore Message",
+                                    "type": "RestoreContentBodyFromAttributeFilter",
+                                    "class": "com.vordel.circuit.body.RestoreContentBodyFromAttributeFilter",
+                                    "status": "Pass",
+                                    "filterTime": 1584458235758,
+                                    "execTime": 0
+                                }, {
+                                    "espk": "DEFAULT_PRIMARY_VordelGateway_7.7.0:-7306991275105282630",
+                                    "name": "Extract REST Request Attributes",
+                                    "type": "ExtractRESTAttributesFilter",
+                                    "class": "com.vordel.circuit.attribute.ExtractRESTAttributesFilter",
+                                    "status": "Pass",
+                                    "filterTime": 1584458235759,
+                                    "execTime": 0
+                                }, {
+                                    "espk": "DEFAULT_PRIMARY_VordelGateway_7.7.0:7736470200303360116",
+                                    "name": "create backend url",
+                                    "type": "SetAttributeFilter",
+                                    "class": "com.vordel.circuit.attribute.SetAttributeFilter",
+                                    "status": "Pass",
+                                    "filterTime": 1584458235766,
+                                    "execTime": 7
+                                }, {
+                                    "espk": "DEFAULT_PRIMARY_VordelGateway_7.7.0:-7871063914937142839",
+                                    "name": "Connect to sivss",
+                                    "type": "ConnectToURLFilter",
+                                    "class": "com.vordel.circuit.net.ConnectToURLFilter",
+                                    "status": "Fail",
+                                    "filterMessage": "Failed to route request to endpoint.",
+                                    "filterTime": 1584458235766,
+                                    "execTime": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
