@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/sbui-axway/mock-logging#readme",
   "dependencies": {
-    "async": "^3.2.0",
+    "async": "^3.2.2",
     "express": "^4.17.1"
   },
   "engines": {
